@@ -1,0 +1,104 @@
+{
+  "server": {
+    "host": "0.0.0.0",
+    "port": 8815,
+    "name": "cert-mcp-server",
+    "version": "1.0.0"
+  },
+  "devices": {
+    "fortigate": {
+      "fw-01": {
+        "host": "192.168.1.1",
+        "port": 443,
+        "api_token": "your_fortigate_api_token",
+        "vdom": "root",
+        "verify_ssl": false,
+        "timeout": 30
+      },
+      "fw-02": {
+        "host": "192.168.1.2",
+        "port": 443,
+        "username": "admin",
+        "password": "your_password",
+        "vdom": "root",
+        "verify_ssl": false
+      }
+    },
+    "fortimanager": {
+      "fmg-01": {
+        "host": "192.168.1.10",
+        "port": 443,
+        "api_token": "your_fortimanager_api_token",
+        "adom": "root",
+        "verify_ssl": false,
+        "timeout": 30
+      }
+    },
+    "fortianalyzer": {
+      "faz-01": {
+        "host": "192.168.1.11",
+        "port": 443,
+        "username": "admin",
+        "password": "your_password",
+        "adom": "root",
+        "verify_ssl": false
+      }
+    },
+    "windows": {
+      "web-01": {
+        "host": "192.168.1.20",
+        "port": 5986,
+        "username": "Administrator",
+        "password": "your_password",
+        "transport": "ntlm",
+        "verify_ssl": false,
+        "cert_store": "LocalMachine\\My"
+      }
+    },
+    "linux": {
+      "nginx-01": {
+        "host": "192.168.1.30",
+        "port": 22,
+        "username": "admin",
+        "ssh_key_path": "~/.ssh/id_rsa",
+        "service_type": "nginx"
+      },
+      "apache-01": {
+        "host": "192.168.1.31",
+        "port": 22,
+        "username": "admin",
+        "password": "your_password",
+        "service_type": "apache"
+      },
+      "haproxy-01": {
+        "host": "192.168.1.32",
+        "port": 22,
+        "username": "admin",
+        "ssh_key_path": "~/.ssh/id_rsa",
+        "service_type": "haproxy"
+      },
+      "custom-01": {
+        "host": "192.168.1.33",
+        "port": 22,
+        "username": "admin",
+        "ssh_key_path": "~/.ssh/id_rsa",
+        "service_type": "generic",
+        "cert_path": "/opt/myapp/ssl/{name}.crt",
+        "key_path": "/opt/myapp/ssl/{name}.key",
+        "chain_path": "/opt/myapp/ssl/{name}.chain.crt",
+        "reload_command": "systemctl restart myapp"
+      }
+    }
+  },
+  "acme": {
+    "email": "admin@example.com",
+    "staging": false,
+    "account_key_path": "~/.acme/account.key"
+  },
+  "logging": {
+    "level": "INFO",
+    "console": true,
+    "file_path": null,
+    "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  }
+}
