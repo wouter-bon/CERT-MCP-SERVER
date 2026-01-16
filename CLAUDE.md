@@ -24,6 +24,8 @@ CERT_MCP_CONFIG=config/config.json uv run python -m cert_mcp.server
 
 # Run all tests
 uv run pytest
+# Or without uv:
+PYTHONPATH=src python3 -m pytest tests/
 
 # Run single test file
 uv run pytest tests/test_config.py
